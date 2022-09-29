@@ -15,6 +15,10 @@ function App() {
       <Toggle />
       <Lightbulb />
       <SmartLightbulb />
+      <div>
+        <label htmlFor="localstorage">value in localStorage of "irgendeinkey" key: </label>
+        <input id="localstorage" value={value2} onChange={(event) => setValue2(event.target.value)} />
+      </div>
     </div>
   );
 }
