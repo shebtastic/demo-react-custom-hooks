@@ -52,7 +52,11 @@ function useLocalStorage(initialValue, key = "cgn-react-app") {
       case null:
         return initialValue
       default:
-        return store
+        try {
+          return JSON.parse(store)
+        } catch (e) {
+          return store
+        }
     }
   })
 
