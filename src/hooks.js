@@ -47,18 +47,17 @@ function useLocalStorage(initialValue, key = "cgn-react-app") {
   const [state, setState] = useState(() => { //lazy initializer
     const store = localStorage.getItem(key)
     switch (store) {
-      case "":
-        return ""
       case "undefined":
         return undefined
       case null:
-      default:
         return initialValue
+      default:
+        return store
     }
   })
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state))
+    localStorage.setItem(key, typeof state === "string" ? state : JSON.stringify(state))
   }, [state, key])
 
   const remove = () => localStorage.removeItem(key)
