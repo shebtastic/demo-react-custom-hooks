@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import Toggle from "./components/Toggle"
+import Lightbulb from "./components/Lightbulb"
+import SmartLightbulb from "./components/SmartLightbulb"
+
+import {useLocalStorage} from "./hooks"
+
 import './App.css';
 
 function App() {
+  const [value, setValue] = useLocalStorage({})
+  const [value2, setValue2] = useLocalStorage("test", "irgendeinkey")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Toggle />
+      <Lightbulb />
+      <SmartLightbulb />
     </div>
   );
 }

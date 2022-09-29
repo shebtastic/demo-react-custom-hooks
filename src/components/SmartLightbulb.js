@@ -1,0 +1,41 @@
+import {useLightBulb} from "../hooks"
+
+function SmartLightbulb() {
+    const [state, {on, off, toggle, stomp, repair}] = useLightBulb()
+
+    function getBackgroundForState() {
+        // eslint-disable-next-line default-case
+        switch(state) {
+            case "on":
+                return "yellow"
+            case "off":
+                return "grey"
+            case "broken":
+                return "red"
+        }
+    }
+
+    return (
+        <div>
+            <div style={{
+                height: "50px",
+                width: "50px",
+                background: getBackgroundForState()
+            }}></div>
+            { 
+                state !== "broken" && <>
+                    <button onClick={on}>On</button>
+                    <button onClick={off}>Off</button>
+                    <button onClick={toggle}>Toggle</button>
+                    <button onClick={stomp}>Break</button>
+                </>
+            }
+            {
+                state === "broken" && <button onClick={repair}>Repair</button>
+            }
+        
+        </div>
+    )
+}
+
+export default SmartLightbulb
